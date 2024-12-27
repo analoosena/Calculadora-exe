@@ -1,44 +1,65 @@
-import { ButtonsNumber, ContainerBottonsNumbers, ButtonsNumber0, ContainerBottonsLast, ContainerMain } from "./styleButtons"
+import {
+  ButtonsNumber,
+  ContainerBottonsNumbers,
+  ContainerBottonsLast,
+  ContainerMain,
+  ContainerBottonsPlus,
+  ContainerBottonsRight,
+  TeclasSecundarias,
+  TeclasPrimarias,
+} from "./styleButtons";
 
-const Buttons = () => {
-  return(
+const Buttons = ({atualizaDisplay, limparDisplay, apagaUltimoNum, calculaOperacao}) => {
+  
+  const acaoClick = (valor) => {
+    atualizaDisplay(valor)
+  }
+  const teclaC = () => {
+    limparDisplay();
+  }
+  const teclaCE = () => {
+    apagaUltimoNum();
+  }
+  const teclaEquals = () => {
+    calculaOperacao();
+  }
+
+  return (
     <ContainerMain>
-      <div>
+      <TeclasPrimarias>
         <ContainerBottonsNumbers>
-          <ButtonsNumber>1</ButtonsNumber>
-          <ButtonsNumber>2</ButtonsNumber>
-          <ButtonsNumber>3</ButtonsNumber>
-          <ButtonsNumber>4</ButtonsNumber>
-          <ButtonsNumber>5</ButtonsNumber>
-          <ButtonsNumber>6</ButtonsNumber>
-          <ButtonsNumber>7</ButtonsNumber>
-          <ButtonsNumber>8</ButtonsNumber>
-          <ButtonsNumber>9</ButtonsNumber>
+          <ButtonsNumber onClick={() => acaoClick("1")}>1</ButtonsNumber>
+          <ButtonsNumber onClick={() => acaoClick("2")}>2</ButtonsNumber>
+          <ButtonsNumber onClick={() => acaoClick("3")}>3</ButtonsNumber>
+          <ButtonsNumber onClick={() => acaoClick("4")}>4</ButtonsNumber>
+          <ButtonsNumber onClick={() => acaoClick("5")}>5</ButtonsNumber>
+          <ButtonsNumber onClick={() => acaoClick("6")}>6</ButtonsNumber>
+          <ButtonsNumber onClick={() => acaoClick("7")}>7</ButtonsNumber>
+          <ButtonsNumber onClick={() => acaoClick("8")}>8</ButtonsNumber>
+          <ButtonsNumber onClick={() => acaoClick("9")}>9</ButtonsNumber>
         </ContainerBottonsNumbers>
         <ContainerBottonsLast>
-        <ButtonsNumber0>0</ButtonsNumber0>
-        <ButtonsNumber>.</ButtonsNumber>
+          <ButtonsNumber onClick={() => acaoClick("0")} className="zero">0</ButtonsNumber>
+          <ButtonsNumber onClick={() => acaoClick(".")} className="dot">.</ButtonsNumber>
         </ContainerBottonsLast>
-      </div>
+      </TeclasPrimarias>
 
-      <div>
-        <section>
-          <ButtonsNumber>CE</ButtonsNumber>
-          <ButtonsNumber>C</ButtonsNumber>
-          <ButtonsNumber>/</ButtonsNumber>
-          <ButtonsNumber>*</ButtonsNumber>
-        </section>
+      <TeclasSecundarias>
+        <ContainerBottonsRight>
+          <ButtonsNumber onClick={teclaCE}className="ce">CE</ButtonsNumber>
+          <ButtonsNumber onClick={teclaC} className="c">C</ButtonsNumber>
+          <ButtonsNumber onClick={() => acaoClick("/")} >/</ButtonsNumber>
+          <ButtonsNumber onClick={() => acaoClick("*")}>*</ButtonsNumber>
+        </ContainerBottonsRight>
 
-        <section>
-          <div>
-          <ButtonsNumber>-</ButtonsNumber>
-          <ButtonsNumber>=</ButtonsNumber>
-          </div>
-          <ButtonsNumber>+</ButtonsNumber>
-        </section>
-      </div>
+        <ContainerBottonsPlus>
+          <ButtonsNumber onClick={() => acaoClick("-")} className="minus">-</ButtonsNumber>
+          <ButtonsNumber onClick={teclaEquals} className="equals">=</ButtonsNumber>
+          <ButtonsNumber onClick={() => acaoClick("+")} className="plus">+</ButtonsNumber>
+        </ContainerBottonsPlus>        
+      </TeclasSecundarias>
     </ContainerMain>
-  )
-}
+  );
+};
 
-export default Buttons
+export default Buttons;

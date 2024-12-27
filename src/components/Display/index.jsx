@@ -1,10 +1,10 @@
 import { ContainerDisplay, MainDisplay, SecondayDisplay } from "./stylesDisplay";
 
-const Display = () => {
+const Display = ({mainValue, SecondaryValue}) => {
   return (
     <ContainerDisplay>
-      <MainDisplay>1236</MainDisplay>
-      <SecondayDisplay>586</SecondayDisplay>
+      <MainDisplay>{mainValue}</MainDisplay>
+      <SecondayDisplay>{SecondaryValue}</SecondayDisplay>
     </ContainerDisplay>
   );
 };
